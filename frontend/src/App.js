@@ -1,10 +1,10 @@
 import React from 'react';
-import Dashboard from './assets/pages/Dashboard'
+import Profile from './assets/pages/Profile'
 
 
 function App() {
   return (
-    <Dashboard />
+    <Profile />
   );
 }
 

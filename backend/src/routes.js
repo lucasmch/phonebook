@@ -5,7 +5,8 @@ const ContactController = require('./controllers/ContactController');
 const routes = express.Router();
 
 routes.get('/', ContactController.index);
-routes.post('/', ContactController.create);
-routes.delete('/:id', ContactController.delete);
+routes.get('/dashboard', ContactController.pages);
+routes.post('/dashboard', ContactController.create);
+routes.delete('/dashboard/:id', ContactController.delete);
 
 module.exports = routes;

@@ -2,11 +2,23 @@ const connection = require('../database/connection');
 
 module.exports = {
   async index(request, response) {
+    const contacts = await connection('contacts')
+      .limit(3)
+      .select('*');
+
+    const [count] = await connection('contacts').count();
+
+    response.header('X-Total-Count', count['count(*)']);
+    
+      return response.json(contacts)
+  },
+
+  async pages(request, response) {
     const { page = 1} = request.query;
 
     const contacts = await connection('contacts')
-      .limit(3)
-      .offset((page -1) * 3)
+      .limit(10)
+      .offset((page -1) * 10)
       .select('*');
 
     const [count] = await connection('contacts').count();
